@@ -1,0 +1,24 @@
+plt.figure(figsize=(10, 6))
+hp,hc = get_td_waveform(approximant="IMRPhenomD",
+                         mass1=1.46,
+                         mass2=1.27,
+                         delta_t=1.0/4096,
+                         f_lower=30,
+                        distance = 40
+                        )
+plt.plot(hp.sample_times, hp, label='Plus Polarization (hp)')
+plt.plot(hc.sample_times, hc, label='Cross Polarization (hc)')
+plt.legend()
+plt.grid(True)
+plt.xlabel('Time (s)')
+plt.ylabel('Strain')
+plt.show()
+
+plt.plot(hp.sample_times, hp, label='Plus Polarization (hp)')
+plt.plot(hc.sample_times, hc, label='Cross Polarization (hc)')
+plt.legend()
+plt.grid(True)
+plt.xlim(-0.05,0)
+plt.xlabel('Time (s)')
+plt.ylabel('Strain')
+plt.show()
