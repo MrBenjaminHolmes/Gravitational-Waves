@@ -10,7 +10,7 @@ hp1, _ = get_td_waveform(approximant="IMRPhenomD",
                          f_lower=25)
 hp1 = hp1 / max(numpy.correlate(hp1, hp1, mode='full'))**0.5
 
-# Injection Time
+#Injection Time
 fixed_time = 500
 waveform_start = int(fixed_time * sample_rate)
 
@@ -48,9 +48,10 @@ data_whitened = (ts.to_frequencyseries() / psd_td**0.5).to_timeseries()
 hp1_whitened = (hp1.to_frequencyseries() / psd_hp1**0.5).to_timeseries() * 1E-21
 
 # Create NumPy Arrays for Data
-cross_correlation = numpy.zeros([len(data)-len(hp1)])
+
 hp1n = hp1_whitened.numpy()
 datan = data_whitened.numpy()
+cross_correlation = numpy.zeros([len(datan)-len(hp1)])
 
 # Slide Template Across Sample
 for i in range(len(datan) - len(hp1n)):
